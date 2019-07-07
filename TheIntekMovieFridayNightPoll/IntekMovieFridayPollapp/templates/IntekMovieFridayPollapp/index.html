@@ -1,0 +1,19 @@
+{% extends 'IntekMovieFridayPollapp/base.html' %}
+
+{% block content %}
+    <div class="pb-0 pl-0 mb-4">
+        <h4 class="text-light mb-0">Choose a Movie Friday to vote</h4>
+    </div>
+    {% if latest_question_list %}
+        <div class="list-group">
+            {% for question in latest_question_list %}
+                <button type="button" class="list-group-item list-group-item-action">
+                    <a href="{% url 'IntekMovieFridayPollapp:detail' question.id %}"
+                       style="color: #19191a">{{ question.question_text }}</a>
+                </button>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+{% endblock %}

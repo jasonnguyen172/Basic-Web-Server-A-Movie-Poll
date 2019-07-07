@@ -1,0 +1,15 @@
+{% extends 'IntekMovieFridayPollapp/base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'IntekMovieFridayPollapp/style.css' %}"/>
+
+    <h4 class="text-light pb-4">Results for {{ question.question_text }}</h4>
+
+    <ul>
+        {% for choice in question.choice_set.all %}
+            <li class="text-light">{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+            <br>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'IntekMovieFridayPollapp:detail' question.id %}">Vote again?</a>
+{% endblock %}

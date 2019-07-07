@@ -1,0 +1,29 @@
+{% extends 'IntekMovieFridayPollapp/base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'IntekMovieFridayPollapp/style.css' %}"/>
+    <div class="poll">
+        <h4 class="mb-3">{{ question.question_text }}</h4>
+    </div>
+
+    {% if error_message %}<p class="text-danger"><strong>{{ error_message }}</strong></p>{% endif %}
+
+    <form class="p-3" action="{% url 'IntekMovieFridayPollapp:vote' question.id %}" method="post">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+            <button type="button" class="list-group-item list-group-item-action py-2 d-inline-flex mb-3">
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"/>
+                <div class="col-12">
+                    <label class="flex-wrap" style="color: black; margin: 0; width: 100%"
+                           for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+                </div>
+            </button>
+        {% endfor %}
+        <in class="d-flex justify-content-between">
+            <input id="voteButton" class="rounded col-2 mt-4" type="submit" value="Vote"/>
+            <a href="{% url 'IntekMovieFridayPollapp:index' %}" id="backButton" class="rounded col-2 text-dark mt-4">Back</a>
+
+            </div>
+    </form>
+
+{% endblock %}

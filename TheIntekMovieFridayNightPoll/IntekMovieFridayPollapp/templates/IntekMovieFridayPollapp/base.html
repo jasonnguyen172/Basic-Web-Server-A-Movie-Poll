@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Intek Movie Friday Night Poll</title>
+</head>
+
+<body class="flex-column">
+<div class="header text-center mb-lg-5">
+{#    <h1>The Intek Movie Friday Night Poll</h1>#}
+    <img src="{{ STATIC_URL }}IntekMovieFridayPollapp/images/text.gif" alt="header">
+</div>
+<div class="container pt-5 d-flex justify-content-center">
+{#    <div class="col-4"></div>#}
+    <div class="card rounded">
+        <div class="card-header text-center my-3">
+            <img class="logo w-75" src="{{ STATIC_URL }}IntekMovieFridayPollapp/images/logo.png" alt="logo">
+        </div>
+        <div class="card-body d-flex flex-column justify-content-center mb-4 pt-0">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}IntekMovieFridayPollapp/style.css">
+</body>
+</html>
